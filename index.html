@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="Pierre">Pierre</button>
+    <button id="Feuille">Feuille</button>
+    <button id="Ciseaux">Ciseaux</button>
+</body>
+<script>
+const tab = ["Pierre", "Feuille", "Ciseaux"];
+let choix = Math.random();
+if(choix < 0.33){
+    console.log(tab[0]);
+}else if(choix > 0.33){
+    console.log(tab[1]);
+}else{
+    console.log(tab[2]);
+}
+let Pierre = document.getElementById("Pierre");
+Pierre.addEventListener("click",function () {
+    console.log("Pierre");
+})
+
+let Feuille = document.getElementById("Feuille");
+Feuille.addEventListener("click",function () {
+    console.log("Feuille");
+})
+
+let Ciseaux = document.getElementById("Ciseaux");
+Ciseaux.addEventListener("click",function () {
+    console.log("Ciseaux");
+})
+</script>
+</html>
