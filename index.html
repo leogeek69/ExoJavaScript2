@@ -1,38 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <button id="Pierre">Pierre</button>
     <button id="Feuille">Feuille</button>
     <button id="Ciseaux">Ciseaux</button>
+    <div id="resultat"></div>
+    <div id="score"></div>
 </body>
 <script>
-const tab = ["Pierre", "Feuille", "Ciseaux"];
-let choix = Math.random();
-if(choix < 0.33){
-    console.log(tab[0]);
-}else if(choix > 0.33){
-    console.log(tab[1]);
-}else{
-    console.log(tab[2]);
-}
-let Pierre = document.getElementById("Pierre");
-Pierre.addEventListener("click",function () {
-    console.log("Pierre");
-})
+    let resultat = document.getElementById('resultat');
+    let score = document.getElementById('score');
+    let scoreUti = 0;
+    let scoreOrdi = 0;
 
-let Feuille = document.getElementById("Feuille");
-Feuille.addEventListener("click",function () {
-    console.log("Feuille");
-})
+    function jeux(choixUti) {
+        const tab = ["Pierre", "Feuille", "Ciseaux"];
+        let choix = Math.random();
+        //let choixUti = 0;
+        if (choix < 0.33) {
+            choix = tab[0];
+            console.log(tab[0]);
+        } else if (choix < 0.66) {
+            choix = tab[1];
+            console.log(tab[1]);
+        } else {
+            choix = tab[2];
+            console.log(tab[2]);
+        }
 
-let Ciseaux = document.getElementById("Ciseaux");
-Ciseaux.addEventListener("click",function () {
-    console.log("Ciseaux");
-})
+        if (choix == "Pierre" & choixUti == "Feuille") {
+            scoreUti += 1; 
+        }
+        if (choix == "Pierre" & choixUti == "Ciseaux") {
+            scoreOrdi += 1;
+        }
+        if (choix == "Feuille" & choixUti == "Pierre") {
+            scoreOrdi += 1; 
+        }
+        if (choix == "Feuille" & choixUti == "Ciseaux") {
+            scoreUti += 1;
+        }
+        if (choix == "Ciseaux" & choixUti == "Pierre") {
+            scoreUti += 1; 
+        }
+        if (choix == "Ciseaux" & choixUti == "Feuille") {
+            scoreOrdi += 1;
+        }
+
+        score.textContent = "Ordinateur : " + scoreOrdi + "  " + "Humain : " + scoreUti;
+        resultat.textContent = "Ordinateur : " + choix + "  " + "Humain : " + choixUti;
+    }
+
+    let Pierre = document.getElementById("Pierre");
+    Pierre.addEventListener("click", function () {
+        choixUti = "Pierre"
+        jeux("Pierre");
+        //res.textContent = "Ordi : " + choix + " " + "Uti : " + choixUti
+    })
+
+    let Feuille = document.getElementById("Feuille");
+    Feuille.addEventListener("click", function () {
+        choixUti = "Feuille"
+        jeux("Feuille");
+        //res.textContent = "Ordi : " + choix + "Uti : " + choixUti
+    })
+
+    let Ciseaux = document.getElementById("Ciseaux");
+    Ciseaux.addEventListener("click", function () {
+        choixUti = "Ciseaux"
+        jeux("Ciseaux");
+        //res.textContent = "Ordi : " + choix + "Uti : " + choixUti
+    })
 </script>
+
 </html>
