@@ -16,7 +16,7 @@
    2. LE LOOK DES BLOCS (La peinture et la forme générale)
    ========================================================================== */
 /* On applique ces règles d'un coup à tous nos éléments pour éviter de se répéter */
-#infos, #title, #subtitle, #summary, #competences {
+#infos, #title, #subtitle, #summary, #competences, #profile {
   background-color: #166088; /* Donne la couleur bleue de ton image */
   color: white;              /* Écrit le texte en blanc */
   padding: 20px;             /* Crée de l'espace à l'intérieur du bloc autour du texte */
@@ -66,7 +66,9 @@
   gap: 5px;            /* Crée un petit espace entre "BDD", "HTML" et "JavaScript" */
 }
 
-/* --- LE BLOC EN TROP --- */
 #profile {
-  display: none;       /* Cache ce bloc car il n'est pas sur ton dessin */
+    grid-column: 2;
+    grid-row: 5;
+    width: 70%;
 }
+

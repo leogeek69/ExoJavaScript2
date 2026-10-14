@@ -3,20 +3,34 @@ fetch("profil.json")
     .then(donnee => {
         afficherCV(donnee)
     })
-    .catch(error =>{
+    .catch(error => {
         console.error("pas bon", error);
     });
 
 fetch("https://api.github.com/users/leogeek69")
     .then(reponse => reponse.json())
-    .then(donnee => {
-        afficherCV(donnee)
+    .then(donneeDeGit => {
+        const divprofile = document.createElement("div");
+        divprofile.id = "profile"
+        document.getElementById('cv').appendChild(divprofile)
+        divprofile.innerHTML = donneeDeGit.login;
+        divprofile.innerHTML += "<br>" + donneeDeGit.id;
     })
-    .catch(error =>{
+    .catch(error => {
         console.error("pas bon", error);
     });
 
-function afficherCV(profil){
+fetch("https://api.github.com/users/leogeek69/repos")
+    .then(reponse => reponse.json())
+    .then(allRepo => {
+        const divRepo = document.createElement("div")
+        document.getElementById("cv").appendChild(divRepo)
+        allRepo.forEach(repo => {
+            divRepo.innerHTML += "<br>" + repo.name
+        })
+    })
+
+function afficherCV(profil) {
     const div = document.createElement("div");
     div.id = "cv"
     document.body.appendChild(div)
@@ -31,10 +45,6 @@ function afficherCV(profil){
     h2.innerHTML = profil.poste
     div.appendChild(h2)
 
-    const divprofile = document.createElement("div");
-    divprofile.id = "profile"
-    div.appendChild(divprofile)
-    divprofile.innerHTML = "profile"
 
     const divinfos = document.createElement("div");
     divinfos.id = "infos"
