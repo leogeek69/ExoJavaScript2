@@ -1,0 +1,72 @@
+/* ==========================================================================
+   1. LE CONTENEUR PRINCIPAL (La boîte invisible qui contient tout le CV)
+   ========================================================================== */
+#cv {
+  display: grid;       /* Active le mode "grille" (tableau invisible) */
+  
+  /* Crée 2 colonnes : la 1ère fait 250px de large, la 2ème prend tout le reste (1fr) */
+  grid-template-columns: 250px 1fr; 
+  
+  gap: 15px;           /* Crée un espace de 15 pixels entre chaque bloc bleu */
+  max-width: 1000px;   /* Empêche le CV de devenir trop large sur les grands écrans */
+  margin: 20px auto;   /* Centre tout le CV au milieu de la page de gauche à droite */
+}
+
+/* ==========================================================================
+   2. LE LOOK DES BLOCS (La peinture et la forme générale)
+   ========================================================================== */
+/* On applique ces règles d'un coup à tous nos éléments pour éviter de se répéter */
+#infos, #title, #subtitle, #summary, #competences {
+  background-color: #166088; /* Donne la couleur bleue de ton image */
+  color: white;              /* Écrit le texte en blanc */
+  padding: 20px;             /* Crée de l'espace à l'intérieur du bloc autour du texte */
+  margin: 0;                 /* Supprime les espaces vides extérieurs par défaut */
+}
+
+/* ==========================================================================
+   3. LE RANGEMENT (On place chaque élément dans notre tableau invisible)
+   ========================================================================== */
+
+/* --- LE BLOC DE GAUCHE --- */
+#infos {
+  grid-column: 1;      /* Se place dans la 1ère colonne */
+  grid-row: 1 / 5;     /* S'étire de la ligne 1 jusqu'à la ligne 5 (prend toute la hauteur) */
+  min-height: 450px;   /* Donne une hauteur minimum pour que le bloc soit grand */
+}
+
+/* --- LES BLOCS DE DROITE --- */
+/* Ils vont tous dans la 2ème colonne (grid-column: 2) mais sur des lignes différentes */
+
+#title {
+  grid-column: 2;      /* 2ème colonne */
+  grid-row: 1;         /* 1ère ligne */
+  font-size: 24px;     /* Grossit le texte du prénom */
+}
+
+#subtitle {
+  grid-column: 2;      /* 2ème colonne */
+  grid-row: 2;         /* 2ème ligne */
+  width: 60%;          /* Réduit la largeur à 60% pour faire comme sur l'image */
+  justify-self: center; /* Centre le bloc raccourci au milieu de sa colonne */
+}
+
+#summary {
+  grid-column: 2;      /* 2ème colonne */
+  grid-row: 3;         /* 3ème ligne */
+  padding: 40px 20px;  /* On met plus d'espace en haut/bas pour qu'il soit plus gros */
+}
+
+#competences {
+  grid-column: 2;      /* 2ème colonne */
+  grid-row: 4;         /* 4ème ligne */
+  width: 70%;          /* Réduit la largeur à 70% comme sur ton image */
+  
+  list-style-type: none; /* Supprime les petits points noirs de la liste <ul> */
+  flex-direction: column; /* Force les compétences à s'empiler de haut en bas */
+  gap: 5px;            /* Crée un petit espace entre "BDD", "HTML" et "JavaScript" */
+}
+
+/* --- LE BLOC EN TROP --- */
+#profile {
+  display: none;       /* Cache ce bloc car il n'est pas sur ton dessin */
+}
